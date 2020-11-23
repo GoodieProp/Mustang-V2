@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Mustang V2</title>
+        <link rel="stylesheet" href="mustang_v2.css">
+        <script src="mustang_v2.js"></script>
+    </head>
+    <body onload="initApp()">
+        <h1>Mustang V2</h1>
+        <p>Welcome to Mustang V2 <br><br>To get started, please <b>click on Load Index button</b> to load in the Mustang Contacts. 
+            <br>After clicking on Load Index, <b>click on Load Contacts</b> to load them into the form below.
+        </p>
+        <button onclick="loadIndex()">Load Index</button><br>
+        <button onclick="loadContacts()">Load Contacts</button><br>
+        <button onclick="logContacts()">Log Contacts to Console</button><br><br>
+
+        <form autocomplete="off">
+            <div class="autocomplete">
+                <input id="contactList" type="text" name="myContacts" placeholder="Search for Contacts.." >
+            </div>
+            <input type="submit">
+        </form><br>
+
+        <table>
+            <tr>
+                <td>First Name:</td>
+                <td><input id="fnID" type="text" value="" size="25"></td>
+            </tr>
+            <tr>
+                <td>Last Name:</td>
+                <td><input id="lnID" type="text" value="" size="25"></td>
+            </tr>
+            <tr>
+                <td>Email:</td>
+                <td><input type="text" value="" size="25" id="eID"></td>
+            </tr>
+            <tr>
+                <td>City:</td>
+                <td><input type="text" value="" size="25" id="cID"></td>
+            </tr>
+            <tr>
+                <td>State:</td>
+                <td><input type="text" value="" size="25" id="sID" onkeypress="keyPressed()"></td>
+            </tr>
+            <tr>
+                <td>Zipcode:</td>
+                <td><input type="text" value="" size="25" id="zcID" onblur="zipBlurFunction()"></td>
+            </tr>
+            <tr>
+                <td>Favorite Hobby:</td>
+                <td><input type="text" value="" size="25" id="fhID"></td>
+            </tr>
+            <tr>
+                <td><button id="previousbtn" type="button" onclick="previous()">Previous</button></td>
+                <td><button id="nextbtn" type="button" onclick="next()">Next</button></td>
+            <tr>
+                <td><button type="button" onclick="add()">Add</button></td>
+                <td><button id="deletebtn" type="button" onclick="remove()">Delete</button></td>
+            </tr>
+            <tr>
+                <td><button id="updatebtn" type="button" onclick="updateContact()">Update</button></td>
+            </tr>
+        </table>
+
+        <p id="statusID"></p>
+        <br>
+        <hr><br><br>
+
+        Index:<div id="loadIndex"></div> <br>
+        Contacts:<div id="contactsID"></div> <br>
+
+    </body>
+</html>
