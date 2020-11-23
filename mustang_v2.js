@@ -1,28 +1,38 @@
+/**
+ * Author: Xavier Gonzalez
+ * Class: Web & Distributed Programming
+ * Project: Mustang V2
+ * Description: Loads, Logs, create, edit, delete, update, and views Mustang Contacts. Functionality file
+ * File: mustang_v2.js
+ */
 
+// Initialized Variables
 var cURLArray = [];
 var cArray = [];
 var loadingContact = 0;
 var currentContactIndex = 0; 
 
+// Initialize Application
 function initApp() {
     console.log("Initializing Mustang Application V2");
 }
 
+// Views the current contacts - First name, last name, email, city, state, zipcode, and favorite hobbies
+// Also, in status it shows what contact is being shown in the array
 function viewCurrentContact() {
     currentContact = cArray[currentContactIndex];
     console.log(currentContact);
-    document.getElementById("fnID").value = currentContact.firstName;   // first and last
+    document.getElementById("fnID").value = currentContact.firstName;
     document.getElementById("lnID").value = currentContact.lastName;
     document.getElementById("eID").value = currentContact.email;   
     document.getElementById("cID").value = currentContact.city;   
     document.getElementById("sID").value = currentContact.state;
     document.getElementById("zcID").value = currentContact.zip;
-    document.getElementById("fhID").value = currentContact.favoriteHobby;  // additional field 
-
-    // Todo: Add additional fields.
+    document.getElementById("fhID").value = currentContact.favoriteHobby; 
     document.getElementById("statusID").innerHTML = "Status: Viewing contact " + (currentContactIndex+1) + " of " + cArray.length;
 }
 
+// Functionality to update the current showing contact
 function updateContact() {
     console.log("Updating Contact!");
     currentContact = cArray[currentContactIndex];
@@ -45,6 +55,7 @@ function updateContact() {
     viewCurrentContact();
 }
 
+// button functionality to go to the previous contact in array
 function previous() {
     if (currentContactIndex > 0) {
         currentContactIndex--;
@@ -62,6 +73,7 @@ function previous() {
     
 }
 
+// button functionality to go to the next contact in array
 function next() {
     if (currentContactIndex < (cArray.length-1)) {
         currentContactIndex++;
@@ -78,6 +90,7 @@ function next() {
     }
 }
 
+// button functionality to add a contact to the array
 function add() {
     console.log('add()');
 
@@ -102,6 +115,7 @@ function add() {
     console.log(newContact);
 }
 
+// button functionality to remove the current showing contact
 function remove() {
     console.log('remove()');
 
@@ -110,10 +124,15 @@ function remove() {
     cArray.splice(currentContactIndex, 1); 
 }
 
+// calls getPlace() function when user clicks outside of zip box or enter
 function zipBlurFunction() {
     getPlace();
 }
 
+/**
+ * Goes through an array in getCityState.php.
+ * If only the zipcode is showing in the website, it will grab the city and state for you.
+ */
 function getPlace() {
     var zip = document.getElementById("zcID").value;
     console.log("Zip: " + zip);
@@ -137,6 +156,7 @@ function getPlace() {
     xhr.send(null);
 }
 
+// key logs
 function keyPressed() {
     console.log('keyPressed()');
 
@@ -209,6 +229,8 @@ async function loadNextContact(URL) {
 async function logContacts() {
     console.log(cArray);
 }
+
+//------------------------------------------------------------------------------------------------
 
 // taken from w3Schools
 function autocomplete(inp, arr) {
